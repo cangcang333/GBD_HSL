@@ -59,10 +59,10 @@ namespace GBD
 
             this.Load += MainForm_Load;
 
-            
+            //
             this.Load += OpenPlc;
             this.Load += HandlingPLCData;
-            
+            //
 
             InitializeMainForm();
 
@@ -103,6 +103,7 @@ namespace GBD
             //txtCurrentRecipe.Text = GlobalData.RecipeName;
             //txtType.Text = TypeTransform();
             txtSystemStatus.Text = "系统完成初始化";
+            txtCurrentUser.Text = "操作员";
         }
 
 
@@ -130,7 +131,7 @@ namespace GBD
                 ReadPlc1();
                 // 第二步：解析PLC1收到的数据， 根据不同的工序分别进行处理及应答
 
-                Thread.Sleep(300);
+                Thread.Sleep(1000);
 
 
                 //break;
@@ -256,31 +257,31 @@ namespace GBD
                 workpiece.stepNr = sieMeasure.ByteTransform.TransInt16(read.Content, 0);
                 workpiece.stepNrCopy = sieMeasure.ByteTransform.TransInt16(read.Content, 2);
                 Log.Debug("workpiece.stepNr = " + workpiece.stepNr + ", workpiece.stepNrCopy = " + workpiece.stepNrCopy);
-                if (workpiece.stepNr == 1)
+                if (workpiece.stepNr == 1 && workpiece.stepNrCopy == 0)
                 {
                     readPartData = sieMeasure.Read(GlobalData.DbRecheckNumber, UInt16.Parse(GlobalData.RecheckStructLength));
                     if (readPartData.IsSuccess)
                     {
                         partData.resultP1 = sieMeasure.ByteTransform.TransInt16(readPartData.Content, 0);
-                        partData.resultP1 = sieMeasure.ByteTransform.TransInt16(readPartData.Content, 2);
+                        partData.resultP2 = sieMeasure.ByteTransform.TransInt16(readPartData.Content, 2);
                         Log.Debug("partData.resultP1 = " + partData.resultP1);
                         Log.Debug("partData.resultP2 = " + partData.resultP2);
 
                         // 第2个字节表示此次发送的实际有效长度，对于string类型变量，不是每次都需要把整个256个字节读出来
                         ushort testP10Len = sieMeasure.ReadByte("DB421.5").Content;
-                        partData.testP10 = sieMeasure.ReadString("DB421.4", testP10Len).Content;
+                        partData.testP10 = sieMeasure.ReadString("DB421.6", testP10Len).Content;
 
                         ushort testP11Len = sieMeasure.ReadByte("DB421.261").Content;
-                        partData.testP11 = sieMeasure.ReadString("DB421.260", testP11Len).Content;
+                        partData.testP11 = sieMeasure.ReadString("DB421.262", testP11Len).Content;
 
                         ushort testP12Len = sieMeasure.ReadByte("DB421.517").Content;
-                        partData.testP12 = sieMeasure.ReadString("DB421.516", testP12Len).Content;
+                        partData.testP12 = sieMeasure.ReadString("DB421.518", testP12Len).Content;
 
                         ushort testP13Len = sieMeasure.ReadByte("DB421.773").Content;
-                        partData.testP13 = sieMeasure.ReadString("DB421.772", testP13Len).Content;
+                        partData.testP13 = sieMeasure.ReadString("DB421.774", testP13Len).Content;
 
                         ushort testP14Len = sieMeasure.ReadByte("DB421.1029").Content;
-                        partData.testP14 = sieMeasure.ReadString("DB421.1028", testP14Len).Content;
+                        partData.testP14 = sieMeasure.ReadString("DB421.1030", testP14Len).Content;
 
                         Log.Debug(  "testP10Len = " + testP10Len +
                                     "testP11Len = " + testP11Len +
@@ -295,19 +296,19 @@ namespace GBD
                         Log.Debug(partData.testP14);
 
                         ushort testP20Len = sieMeasure.ReadByte("DB421.1285").Content;
-                        partData.testP20 = sieMeasure.ReadString("DB421.1284", testP20Len).Content;
+                        partData.testP20 = sieMeasure.ReadString("DB421.1286", testP20Len).Content;
 
                         ushort testP21Len = sieMeasure.ReadByte("DB421.1541").Content;
-                        partData.testP21 = sieMeasure.ReadString("DB421.1540", testP21Len).Content;
+                        partData.testP21 = sieMeasure.ReadString("DB421.1542", testP21Len).Content;
 
                         ushort testP22Len = sieMeasure.ReadByte("DB421.1797").Content;
-                        partData.testP22 = sieMeasure.ReadString("DB421.1796", testP22Len).Content;
+                        partData.testP22 = sieMeasure.ReadString("DB421.1798", testP22Len).Content;
 
                         ushort testP23Len = sieMeasure.ReadByte("DB421.2053").Content;
-                        partData.testP23 = sieMeasure.ReadString("DB421.2052", testP23Len).Content;
+                        partData.testP23 = sieMeasure.ReadString("DB421.2054", testP23Len).Content;
 
                         ushort testP24Len = sieMeasure.ReadByte("DB421.2309").Content;
-                        partData.testP24 = sieMeasure.ReadString("DB421.2308", testP24Len).Content;
+                        partData.testP24 = sieMeasure.ReadString("DB421.2310", testP24Len).Content;
 
                         Log.Debug(  "testP20Len = " + testP20Len +
                                     "testP21Len = " + testP21Len +
@@ -327,53 +328,12 @@ namespace GBD
                         Log.Debug("partData.resultP22 = " + partData.resultP22);
 
                         ushort qrCodeP1Len = sieMeasure.ReadByte("DB421.2569").Content;
-                        partData.qrCodeP1 = sieMeasure.ReadString("DB421.2568", qrCodeP1Len).Content;
+                        partData.qrCodeP1 = sieMeasure.ReadString("DB421.2570", qrCodeP1Len).Content;
                         Log.Debug("qrCodeP1Len = " + qrCodeP1Len + ", qrCodeP1:" + partData.qrCodeP1);
 
                         ushort qrCodeP2Len = sieMeasure.ReadByte("DB421.2825").Content;
-                        partData.qrCodeP2 = sieMeasure.ReadString("DB421.2824", qrCodeP2Len).Content;
+                        partData.qrCodeP2 = sieMeasure.ReadString("DB421.2826", qrCodeP2Len).Content;
                         Log.Debug("qrCodeP2Len = " + qrCodeP2Len + ", qrCodeP2:" + partData.qrCodeP2);
-
-                        /*
-                        Log.Debug("acw_len: " + acw_len + ", dcw_len: " + dcw_len + ", ir_len: " + ir_len +
-                            ",qr1_len: " + qr1_len + ",qr2_len" + qr2_len);
-
-                        string[] acw_split = partData.acw.Split(',');
-                        Log.Debug("acw_split length is " + acw_split.Length.ToString());
-                        if (acw_split.Length >= 6)
-                        {
-                            partData.acw_result = acw_split[2].Trim();
-                            partData.acw_voltage = acw_split[3].Trim();
-                            partData.acw_current = acw_split[4].Trim();
-                            partData.acw_time = acw_split[5].Trim();
-                        }
-
-                        string[] dcw_split = partData.dcw.Split(',');
-                        Log.Debug("dcw_split length is " + dcw_split.Length.ToString());
-                        if (dcw_split.Length >= 6)
-                        {
-                            partData.dcw_result = dcw_split[2].Trim();
-                            partData.dcw_voltage = dcw_split[3].Trim();
-                            partData.dcw_current = dcw_split[4].Trim();
-                            partData.dcw_time = dcw_split[5].Trim();
-                        }
-
-                        Log.Debug("partData.result = " + partData.result);
-                        Log.Debug("partData.ir = " + partData.ir);
-                        Log.Debug("partData.qrCode1 = " + partData.qrCode1);
-                        Log.Debug("partData.qrCode2 = " + partData.qrCode2);
-
-
-                        Log.Debug("partData.acw_result =" + partData.acw_result
-                                + ", partData.acw_voltage = " + partData.acw_voltage
-                                + ", partData.acw_current = " + partData.acw_current
-                                + ", partData.acw_time = " + partData.acw_time);
-                        Log.Debug("partData.dcw_result =" + partData.dcw_result
-                                + ", partData.dcw_voltage = " + partData.dcw_voltage
-                                + ", partData.dcw_current = " + partData.dcw_current
-                                + ", partData.dcw_time = " + partData.dcw_time);
-
-                        */
 
 
                         //short val = 1;
@@ -390,14 +350,14 @@ namespace GBD
                         else
                         {
                             //MessageBox.Show("Write to DB420.2 second 2 byte ok");
-                            Log.Info("Write to DB420 first 2 byte ok");
+                            Log.Info("Write to DB420.2 value 1 ok");
                         }
 
                         string sql = "";
                         //
                         
                         // 将读取到的PLC数据存入数据库
-                        sql = String.Format("INSERT INTO tbl_part_data(resultP1, resultP2, testP10, testP11, testP12, testP13, testP14, testP20, testP21, testP22, testP23, testP24, resultP11, resultP22,  qrCodeP1, qrCodeP2) " +
+                        sql = String.Format("INSERT INTO tbl_new_part_data(resultP1, resultP2, testP10, testP11, testP12, testP13, testP14, testP20, testP21, testP22, testP23, testP24, resultP11, resultP22,  qrCodeP1, qrCodeP2) " +
                             "VALUES({0},\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\",\"{9}\",\"{10}\",\"{11}\",\"{12}\",\"{13}\",\"{14}\",\"{15}\")", 
                             partData.resultP1, partData.resultP2, 
                             partData.testP10, partData.testP11, partData.testP12, partData.testP13, partData.testP14,
@@ -410,7 +370,20 @@ namespace GBD
                         if (!ret)
                         {
                             Log.Error("Insert MySQL error");
-                        }    
+                        }
+
+
+                        // 将读取到的PLC数据展示到页面
+                        txtQrCode1.Text = partData.qrCodeP1;
+                        txtQrCode2.Text = partData.qrCodeP2;
+                        txtCode1FinalResult.Text = partData.resultP11.ToString();
+                        txtCode2FinalResult.Text = partData.resultP22.ToString();
+                        txtCode1CheckResult.Text = partData.testP10 + partData.testP11 + partData.testP12 + partData.testP13 + partData.testP14;
+                        txtCode2CheckResult.Text = partData.testP20 + partData.testP21 + partData.testP22 + partData.testP23 + partData.testP24;
+                        txtQrCodeInfo.Text = "时间： " + DateTime.Now + " " + partData.qrCodeP1
+                            +" 检测结果： " +  partData.testP10 + partData.testP11 + partData.testP12 + partData.testP13 + partData.testP14 
+                            + " 最终结果： " + partData.resultP11.ToString() + Environment.NewLine + txtQrCodeInfo.Text;
+                        Application.DoEvents();
 
                     }
                     else
@@ -422,7 +395,7 @@ namespace GBD
                     }
 
                 }
-                else if (workpiece.stepNr == 0)
+                else if (workpiece.stepNr == 0 && workpiece.stepNrCopy == 1)
                 {
                     write = sieMeasure.Write(GlobalData.DbNumberCopy, (short)0);
 
@@ -437,7 +410,8 @@ namespace GBD
                     else
                     {
                         //MessageBox.Show("Write to DB420.2 second 2 byte ok");
-                        Log.Info("Write to DB420 first 2 byte ok");
+                        Log.Info("Write to DB420.2 value 0 ok");
+                        Thread.Sleep(300);
                     }
                 }
               
@@ -520,42 +494,77 @@ namespace GBD
             }
         }
 
+        /**
+         * 测试插入MYSQL 数据，不再使用
+         */ 
         private void btnConnectMysql_Click(object sender, EventArgs e)
         {
-            PartData partData;
-            partData.result = 1;
-            partData.acw = "acw";
-            partData.dcw = "dcw";
-            partData.ir = "ir";
-            partData.qrCode1 = "qrCode1";
-            partData.qrCode2 = "qrCode2";
-            partData.acw_result = "Pass";
-            partData.acw_voltage = "1.5kV";
-            partData.acw_current = "0.156mA";
-            partData.acw_time = "1.0s";
-            partData.dcw_result = "Fail";
-            partData.dcw_voltage = "3.5kV";
-            partData.dcw_current = "0.1uA";
-            partData.dcw_time = "2.0s";
+            NewPartData partData;
+            partData.resultP1 = 1;
+            partData.resultP2 = 1;
+            partData.resultP11 = 0;
+            partData.resultP22 = 0;
+            partData.testP10 = "acw";
+            partData.testP11  = "dcw";
+            partData.testP12 = "ir";
+            partData.testP13 = "ir";
+            partData.testP14 = "ir";
 
-            string sql = String.Format("INSERT INTO tbl_part_data(result, acw, dcw, ir, qr_code1, qr_code2, acw_result, acw_voltage, acw_current, acw_time, dcw_result, dcw_voltage, dcw_current, dcw_time) " +
-                          "VALUES({0},\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\",\"{9}\",\"{10}\",\"{11}\",\"{12}\",\"{13}\")",
-                          partData.result, partData.acw, partData.dcw, partData.ir, partData.qrCode1, partData.qrCode2,
-                          partData.acw_result, partData.acw_voltage, partData.acw_current, partData.acw_time,
-                          partData.dcw_result, partData.dcw_voltage, partData.dcw_current, partData.dcw_time);
-            MysqlOperation.ExecuteSqlCommand(sql);
+            partData.testP20 = "acw";
+            partData.testP21 = "dcw";
+            partData.testP22 = "ir22";
+            partData.testP23 = "ir23";
+            partData.testP24 = "ir24";
+
+            
+            partData.qrCodeP1 = "qrCode1";
+            partData.qrCodeP2 = "qrCode2";
+            
+
+
+            string sql = String.Format("INSERT INTO tbl_new_part_data(resultP1, resultP2, testP10, testP11, testP12, testP13, testP14, testP20, testP21, testP22, testP23, testP24, resultP11, resultP22,  qrCodeP1, qrCodeP2) " +
+                            "VALUES({0},\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\",\"{9}\",\"{10}\",\"{11}\",\"{12}\",\"{13}\",\"{14}\",\"{15}\")",
+                            partData.resultP1, partData.resultP2,
+                            partData.testP10, partData.testP11, partData.testP12, partData.testP13, partData.testP14,
+                            partData.testP20, partData.testP21, partData.testP22, partData.testP23, partData.testP24,
+                            partData.resultP11, partData.resultP22,
+                            partData.qrCodeP1, partData.qrCodeP2);
+            //
+            Log.Debug("Sql command ====> " + sql);
+            bool ret = MysqlOperation.ExecuteSqlCommand(sql);
+            if (!ret)
+            {
+                Log.Error("Insert MySQL error");
+            }
+
+
 
         }
 
         private void btnGBDControl_Click(object sender, EventArgs e)
         {
+            Log.Debug("开始进行数据导出");
             MySql.Data.MySqlClient.MySqlConnection conn;
             string myConnectionString;
             myConnectionString = "server = 127.0.0.1;uid=root;" + "pwd=spzhu;database=dbspzhu";
 
-            //string sqlCommand = @"SELECT * FROM tbl_part_data INTO OUTFILE 'D:\\part_data2.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n'";
-            string sqlCommand = @"SELECT * FROM tbl_part_data INTO OUTFILE 'D:\\part_data3.csv' FIELDS TERMINATED BY ','";
+            //string sqlCommand = @"SELECT * FROM tbl_new_part_data INTO OUTFILE 'D:\\part_data2.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n'";
 
+            DateTime dt = DateTime.Now;
+            string now = String.Format("{0:yyyyMMddHHmmss}", dt);
+            Log.Debug("now is " + now);
+
+            string todayDate = DateTime.Now.ToString("yyyy-MM-dd");
+            Log.Debug("todayDate: " + todayDate);
+            string sqlCommand = "SELECT * FROM dbspzhu.tbl_part_data where DATE(created_time) = '" + todayDate
+                + "' INTO OUTFILE 'D:\\\\part_data_" + now + ".csv' FIELDS TERMINATED BY ',';";
+
+            //string sqlCommand = "SELECT * FROM dbspzhu.tbl_new_part_data INTO OUTFILE 'D:\\\\mysqlData\\\\part_data_" + now + ".csv' FIELDS TERMINATED BY ',';";
+            // test
+            //string sqlCommand = "SELECT * FROM dbspzhu.tbl_part_data INTO OUTFILE 'D:\\\\part_data_" + now + ".csv' FIELDS TERMINATED BY ',';";
+            
+            //string sqlCommand = @"SELECT * FROM tbl_new_part_data INTO OUTFILE 'D:\\new_part_data3.csv' FIELDS TERMINATED BY ','";
+            Log.Debug("sqlCommand: " + sqlCommand);
             try
             {
                 conn = new MySql.Data.MySqlClient.MySqlConnection();
@@ -564,6 +573,7 @@ namespace GBD
                 MySqlCommand cmd1 = new MySqlCommand(sqlCommand, conn);
                 int ret = cmd1.ExecuteNonQuery();
                 conn.Close();
+                MessageBox.Show("数据导出完成");
             }
             catch (Exception ex)
             {
@@ -571,21 +581,12 @@ namespace GBD
             }
         }
 
+        // 最新条码信息查询（废弃不用）
         private void btnReadFromDB_Click(object sender, EventArgs e)
         {
             string sql = "";
-            if (rbAll.Checked)
-            {
-                sql = "select * from tbl_part_data order by created_time desc limit 15;";
-            }
-            else if (rbPass.Checked)
-            {
-                sql = "select * from tbl_part_data where result = 1 order by created_time desc limit 15;";
-            }
-            else if (rbFail.Checked)
-            {
-                sql = "select * from tbl_part_data where result = 0 order by created_time desc limit 15;";
-            }
+            sql = "select * from tbl_new_part_data order by created_time desc limit 15;";
+
             
             
             Log.Debug("Sql command ====> " + sql);
@@ -598,11 +599,15 @@ namespace GBD
         private void btnQueryBasedOnQrCode_Click(object sender, EventArgs e)
         {
             string sql = "";
-            string strQrCode1 = txtQrCode1.Text.ToString().Trim();
-            string strQrCode2 = txtQrCode2.Text.ToString().Trim();
-            if (strQrCode1 != String.Empty)
+            string strQrCode1 = txtQrCode.Text.ToString().Trim();
+            if (strQrCode1 != String.Empty )
             {
-                sql = "select * from tbl_part_data where qr_code = '" + strQrCode1 + "' limit 1;";
+                sql = "select * from tbl_new_part_data where qrCodeP1 like '" + strQrCode1 + "%'  or qrCodeP2 like '" + strQrCode1 + "%' limit 1;";
+            }
+            else
+            {
+                MessageBox.Show("错误，产品条码信息都为空，请输入正确的条码信息");
+                return;
             }
 
 
@@ -620,6 +625,7 @@ namespace GBD
             }
 
         }
+
     }
 
     

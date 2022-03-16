@@ -40,7 +40,6 @@
             this.itemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.itemAboutSystem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGBDControl = new System.Windows.Forms.Button();
-            this.btnConnectMysql = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.generalTimer = new System.Windows.Forms.Timer(this.components);
@@ -55,17 +54,25 @@
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.lblCurrentTime = new System.Windows.Forms.Label();
             this.borderRadiusPanel1 = new BWM01.BorderRadiusPanel();
-            this.btnReadFromDB = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtQrCode = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCode2FinalResult = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtCode1FinalResult = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCode2CheckResult = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCode1CheckResult = new System.Windows.Forms.TextBox();
+            this.lblQrCode2 = new System.Windows.Forms.Label();
+            this.txtQrCode2 = new System.Windows.Forms.TextBox();
+            this.btnQueryBasedOnQrCode = new System.Windows.Forms.Button();
             this.lblPadding2Weight = new System.Windows.Forms.Label();
             this.txtQrCodeInfo = new System.Windows.Forms.TextBox();
             this.lblPaddingWeight = new System.Windows.Forms.Label();
             this.txtQrCode1 = new System.Windows.Forms.TextBox();
-            this.rbAll = new System.Windows.Forms.RadioButton();
-            this.rbPass = new System.Windows.Forms.RadioButton();
-            this.rbFail = new System.Windows.Forms.RadioButton();
-            this.btnQueryBasedOnQrCode = new System.Windows.Forms.Button();
-            this.lblQrCode2 = new System.Windows.Forms.Label();
-            this.txtQrCode2 = new System.Windows.Forms.TextBox();
             this.mnsMainMenu.SuspendLayout();
             this.borderRadiusPanel2.SuspendLayout();
             this.borderRadiusPanel1.SuspendLayout();
@@ -79,7 +86,7 @@
             this.itemAbout});
             this.mnsMainMenu.Location = new System.Drawing.Point(0, 0);
             this.mnsMainMenu.Name = "mnsMainMenu";
-            this.mnsMainMenu.Size = new System.Drawing.Size(1060, 28);
+            this.mnsMainMenu.Size = new System.Drawing.Size(1109, 28);
             this.mnsMainMenu.TabIndex = 0;
             this.mnsMainMenu.Text = "MainMenu";
             // 
@@ -158,7 +165,7 @@
             // 
             this.btnGBDControl.BackColor = System.Drawing.Color.DarkTurquoise;
             this.btnGBDControl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnGBDControl.Location = new System.Drawing.Point(755, 547);
+            this.btnGBDControl.Location = new System.Drawing.Point(755, 604);
             this.btnGBDControl.Name = "btnGBDControl";
             this.btnGBDControl.Size = new System.Drawing.Size(124, 56);
             this.btnGBDControl.TabIndex = 1;
@@ -166,23 +173,11 @@
             this.btnGBDControl.UseVisualStyleBackColor = false;
             this.btnGBDControl.Click += new System.EventHandler(this.btnGBDControl_Click);
             // 
-            // btnConnectMysql
-            // 
-            this.btnConnectMysql.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.btnConnectMysql.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnConnectMysql.Location = new System.Drawing.Point(597, 548);
-            this.btnConnectMysql.Name = "btnConnectMysql";
-            this.btnConnectMysql.Size = new System.Drawing.Size(124, 56);
-            this.btnConnectMysql.TabIndex = 1;
-            this.btnConnectMysql.Text = "Insert MySQL";
-            this.btnConnectMysql.UseVisualStyleBackColor = false;
-            this.btnConnectMysql.Click += new System.EventHandler(this.btnConnectMysql_Click);
-            // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.DarkTurquoise;
             this.btnExit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnExit.Location = new System.Drawing.Point(913, 547);
+            this.btnExit.Location = new System.Drawing.Point(913, 604);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(124, 56);
             this.btnExit.TabIndex = 1;
@@ -209,19 +204,19 @@
             // lblQueryInfo
             // 
             this.lblQueryInfo.AutoSize = true;
-            this.lblQueryInfo.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblQueryInfo.Font = new System.Drawing.Font("黑体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblQueryInfo.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.lblQueryInfo.Location = new System.Drawing.Point(12, 127);
+            this.lblQueryInfo.Location = new System.Drawing.Point(12, 120);
             this.lblQueryInfo.Name = "lblQueryInfo";
-            this.lblQueryInfo.Size = new System.Drawing.Size(72, 16);
+            this.lblQueryInfo.Size = new System.Drawing.Size(98, 21);
             this.lblQueryInfo.TabIndex = 50;
-            this.lblQueryInfo.Text = "信息查询";
+            this.lblQueryInfo.Text = "运行信息";
             // 
             // btnReadPLC
             // 
             this.btnReadPLC.BackColor = System.Drawing.Color.DarkTurquoise;
             this.btnReadPLC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnReadPLC.Location = new System.Drawing.Point(307, 551);
+            this.btnReadPLC.Location = new System.Drawing.Point(307, 608);
             this.btnReadPLC.Name = "btnReadPLC";
             this.btnReadPLC.Size = new System.Drawing.Size(111, 53);
             this.btnReadPLC.TabIndex = 71;
@@ -233,7 +228,7 @@
             // 
             this.btnWritePLC.BackColor = System.Drawing.Color.DarkTurquoise;
             this.btnWritePLC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnWritePLC.Location = new System.Drawing.Point(452, 550);
+            this.btnWritePLC.Location = new System.Drawing.Point(452, 607);
             this.btnWritePLC.Name = "btnWritePLC";
             this.btnWritePLC.Size = new System.Drawing.Size(111, 53);
             this.btnWritePLC.TabIndex = 72;
@@ -316,53 +311,198 @@
             // borderRadiusPanel1
             // 
             this.borderRadiusPanel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.borderRadiusPanel1.Controls.Add(this.textBox6);
+            this.borderRadiusPanel1.Controls.Add(this.label6);
+            this.borderRadiusPanel1.Controls.Add(this.txtQrCode);
+            this.borderRadiusPanel1.Controls.Add(this.label5);
+            this.borderRadiusPanel1.Controls.Add(this.label3);
+            this.borderRadiusPanel1.Controls.Add(this.txtCode2FinalResult);
+            this.borderRadiusPanel1.Controls.Add(this.label4);
+            this.borderRadiusPanel1.Controls.Add(this.txtCode1FinalResult);
+            this.borderRadiusPanel1.Controls.Add(this.label1);
+            this.borderRadiusPanel1.Controls.Add(this.txtCode2CheckResult);
+            this.borderRadiusPanel1.Controls.Add(this.label2);
+            this.borderRadiusPanel1.Controls.Add(this.txtCode1CheckResult);
             this.borderRadiusPanel1.Controls.Add(this.lblQrCode2);
             this.borderRadiusPanel1.Controls.Add(this.txtQrCode2);
             this.borderRadiusPanel1.Controls.Add(this.btnQueryBasedOnQrCode);
-            this.borderRadiusPanel1.Controls.Add(this.rbFail);
-            this.borderRadiusPanel1.Controls.Add(this.rbPass);
-            this.borderRadiusPanel1.Controls.Add(this.rbAll);
-            this.borderRadiusPanel1.Controls.Add(this.btnReadFromDB);
             this.borderRadiusPanel1.Controls.Add(this.lblPadding2Weight);
             this.borderRadiusPanel1.Controls.Add(this.txtQrCodeInfo);
             this.borderRadiusPanel1.Controls.Add(this.lblPaddingWeight);
             this.borderRadiusPanel1.Controls.Add(this.txtQrCode1);
             this.borderRadiusPanel1.Location = new System.Drawing.Point(9, 146);
             this.borderRadiusPanel1.Name = "borderRadiusPanel1";
-            this.borderRadiusPanel1.Size = new System.Drawing.Size(1017, 395);
+            this.borderRadiusPanel1.Size = new System.Drawing.Size(1086, 452);
             this.borderRadiusPanel1.TabIndex = 49;
             // 
-            // btnReadFromDB
+            // textBox6
             // 
-            this.btnReadFromDB.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.btnReadFromDB.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnReadFromDB.Location = new System.Drawing.Point(253, 9);
-            this.btnReadFromDB.Name = "btnReadFromDB";
-            this.btnReadFromDB.Size = new System.Drawing.Size(180, 43);
-            this.btnReadFromDB.TabIndex = 73;
-            this.btnReadFromDB.Text = "最新条码信息查询";
-            this.btnReadFromDB.UseVisualStyleBackColor = false;
-            this.btnReadFromDB.Click += new System.EventHandler(this.btnReadFromDB_Click);
+            this.textBox6.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox6.Location = new System.Drawing.Point(13, 356);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox6.Size = new System.Drawing.Size(1049, 80);
+            this.textBox6.TabIndex = 93;
+            this.textBox6.Text = " ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.ForeColor = System.Drawing.Color.DarkTurquoise;
+            this.label6.Location = new System.Drawing.Point(30, 319);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 16);
+            this.label6.TabIndex = 89;
+            this.label6.Text = "条码值";
+            // 
+            // txtQrCode
+            // 
+            this.txtQrCode.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtQrCode.Location = new System.Drawing.Point(111, 316);
+            this.txtQrCode.Name = "txtQrCode";
+            this.txtQrCode.Size = new System.Drawing.Size(315, 26);
+            this.txtQrCode.TabIndex = 90;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.ForeColor = System.Drawing.Color.DarkTurquoise;
+            this.label5.Location = new System.Drawing.Point(10, 130);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(136, 16);
+            this.label5.TabIndex = 87;
+            this.label5.Text = "历史工件检测信息";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ForeColor = System.Drawing.Color.DarkTurquoise;
+            this.label3.Location = new System.Drawing.Point(797, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 16);
+            this.label3.TabIndex = 85;
+            this.label3.Text = "条码2结果";
+            // 
+            // txtCode2FinalResult
+            // 
+            this.txtCode2FinalResult.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtCode2FinalResult.Location = new System.Drawing.Point(892, 71);
+            this.txtCode2FinalResult.Name = "txtCode2FinalResult";
+            this.txtCode2FinalResult.Size = new System.Drawing.Size(100, 26);
+            this.txtCode2FinalResult.TabIndex = 86;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.ForeColor = System.Drawing.Color.DarkTurquoise;
+            this.label4.Location = new System.Drawing.Point(797, 42);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 16);
+            this.label4.TabIndex = 83;
+            this.label4.Text = "条码1结果";
+            // 
+            // txtCode1FinalResult
+            // 
+            this.txtCode1FinalResult.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtCode1FinalResult.Location = new System.Drawing.Point(892, 39);
+            this.txtCode1FinalResult.Name = "txtCode1FinalResult";
+            this.txtCode1FinalResult.Size = new System.Drawing.Size(100, 26);
+            this.txtCode1FinalResult.TabIndex = 84;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.DarkTurquoise;
+            this.label1.Location = new System.Drawing.Point(335, 79);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 16);
+            this.label1.TabIndex = 81;
+            this.label1.Text = "条码2检测值";
+            // 
+            // txtCode2CheckResult
+            // 
+            this.txtCode2CheckResult.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtCode2CheckResult.Location = new System.Drawing.Point(453, 71);
+            this.txtCode2CheckResult.Name = "txtCode2CheckResult";
+            this.txtCode2CheckResult.Size = new System.Drawing.Size(315, 26);
+            this.txtCode2CheckResult.TabIndex = 82;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.ForeColor = System.Drawing.Color.DarkTurquoise;
+            this.label2.Location = new System.Drawing.Point(335, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 16);
+            this.label2.TabIndex = 79;
+            this.label2.Text = "条码1检测值";
+            // 
+            // txtCode1CheckResult
+            // 
+            this.txtCode1CheckResult.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtCode1CheckResult.Location = new System.Drawing.Point(453, 39);
+            this.txtCode1CheckResult.Name = "txtCode1CheckResult";
+            this.txtCode1CheckResult.Size = new System.Drawing.Size(315, 26);
+            this.txtCode1CheckResult.TabIndex = 80;
+            // 
+            // lblQrCode2
+            // 
+            this.lblQrCode2.AutoSize = true;
+            this.lblQrCode2.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblQrCode2.ForeColor = System.Drawing.Color.DarkTurquoise;
+            this.lblQrCode2.Location = new System.Drawing.Point(10, 79);
+            this.lblQrCode2.Name = "lblQrCode2";
+            this.lblQrCode2.Size = new System.Drawing.Size(112, 16);
+            this.lblQrCode2.TabIndex = 77;
+            this.lblQrCode2.Text = "当前条码2信息";
+            // 
+            // txtQrCode2
+            // 
+            this.txtQrCode2.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtQrCode2.Location = new System.Drawing.Point(128, 71);
+            this.txtQrCode2.Name = "txtQrCode2";
+            this.txtQrCode2.Size = new System.Drawing.Size(180, 26);
+            this.txtQrCode2.TabIndex = 78;
+            // 
+            // btnQueryBasedOnQrCode
+            // 
+            this.btnQueryBasedOnQrCode.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.btnQueryBasedOnQrCode.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnQueryBasedOnQrCode.Location = new System.Drawing.Point(482, 307);
+            this.btnQueryBasedOnQrCode.Name = "btnQueryBasedOnQrCode";
+            this.btnQueryBasedOnQrCode.Size = new System.Drawing.Size(88, 43);
+            this.btnQueryBasedOnQrCode.TabIndex = 76;
+            this.btnQueryBasedOnQrCode.Text = "给定条码信息查询";
+            this.btnQueryBasedOnQrCode.UseVisualStyleBackColor = false;
+            this.btnQueryBasedOnQrCode.Click += new System.EventHandler(this.btnQueryBasedOnQrCode_Click);
             // 
             // lblPadding2Weight
             // 
             this.lblPadding2Weight.AutoSize = true;
             this.lblPadding2Weight.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblPadding2Weight.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.lblPadding2Weight.Location = new System.Drawing.Point(52, 9);
+            this.lblPadding2Weight.Location = new System.Drawing.Point(8, 9);
             this.lblPadding2Weight.Name = "lblPadding2Weight";
-            this.lblPadding2Weight.Size = new System.Drawing.Size(184, 16);
+            this.lblPadding2Weight.Size = new System.Drawing.Size(72, 16);
             this.lblPadding2Weight.TabIndex = 62;
-            this.lblPadding2Weight.Text = "Query Filter Condition";
+            this.lblPadding2Weight.Text = "实时信息";
             // 
             // txtQrCodeInfo
             // 
             this.txtQrCodeInfo.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtQrCodeInfo.Location = new System.Drawing.Point(13, 62);
+            this.txtQrCodeInfo.Location = new System.Drawing.Point(11, 149);
+            this.txtQrCodeInfo.MaxLength = 32767000;
             this.txtQrCodeInfo.Multiline = true;
             this.txtQrCodeInfo.Name = "txtQrCodeInfo";
             this.txtQrCodeInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtQrCodeInfo.Size = new System.Drawing.Size(786, 321);
+            this.txtQrCodeInfo.Size = new System.Drawing.Size(1049, 134);
             this.txtQrCodeInfo.TabIndex = 60;
             this.txtQrCodeInfo.Text = " ";
             // 
@@ -371,91 +511,26 @@
             this.lblPaddingWeight.AutoSize = true;
             this.lblPaddingWeight.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblPaddingWeight.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.lblPaddingWeight.Location = new System.Drawing.Point(805, 50);
+            this.lblPaddingWeight.Location = new System.Drawing.Point(10, 42);
             this.lblPaddingWeight.Name = "lblPaddingWeight";
             this.lblPaddingWeight.Size = new System.Drawing.Size(112, 16);
             this.lblPaddingWeight.TabIndex = 20;
-            this.lblPaddingWeight.Text = "给定条码1信息";
+            this.lblPaddingWeight.Text = "当前条码1信息";
             // 
             // txtQrCode1
             // 
             this.txtQrCode1.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtQrCode1.Location = new System.Drawing.Point(808, 69);
+            this.txtQrCode1.Location = new System.Drawing.Point(128, 39);
             this.txtQrCode1.Name = "txtQrCode1";
             this.txtQrCode1.Size = new System.Drawing.Size(180, 26);
             this.txtQrCode1.TabIndex = 21;
-            // 
-            // rbAll
-            // 
-            this.rbAll.AutoSize = true;
-            this.rbAll.Checked = true;
-            this.rbAll.Location = new System.Drawing.Point(66, 34);
-            this.rbAll.Name = "rbAll";
-            this.rbAll.Size = new System.Drawing.Size(41, 16);
-            this.rbAll.TabIndex = 74;
-            this.rbAll.TabStop = true;
-            this.rbAll.Text = "All";
-            this.rbAll.UseVisualStyleBackColor = true;
-            // 
-            // rbPass
-            // 
-            this.rbPass.AutoSize = true;
-            this.rbPass.Location = new System.Drawing.Point(115, 34);
-            this.rbPass.Name = "rbPass";
-            this.rbPass.Size = new System.Drawing.Size(59, 16);
-            this.rbPass.TabIndex = 74;
-            this.rbPass.TabStop = true;
-            this.rbPass.Text = "Passed";
-            this.rbPass.UseVisualStyleBackColor = true;
-            // 
-            // rbFail
-            // 
-            this.rbFail.AutoSize = true;
-            this.rbFail.Location = new System.Drawing.Point(176, 34);
-            this.rbFail.Name = "rbFail";
-            this.rbFail.Size = new System.Drawing.Size(59, 16);
-            this.rbFail.TabIndex = 75;
-            this.rbFail.TabStop = true;
-            this.rbFail.Text = "Failed";
-            this.rbFail.UseVisualStyleBackColor = true;
-            // 
-            // btnQueryBasedOnQrCode
-            // 
-            this.btnQueryBasedOnQrCode.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.btnQueryBasedOnQrCode.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnQueryBasedOnQrCode.Location = new System.Drawing.Point(808, 166);
-            this.btnQueryBasedOnQrCode.Name = "btnQueryBasedOnQrCode";
-            this.btnQueryBasedOnQrCode.Size = new System.Drawing.Size(180, 43);
-            this.btnQueryBasedOnQrCode.TabIndex = 76;
-            this.btnQueryBasedOnQrCode.Text = "给定条码信息查询";
-            this.btnQueryBasedOnQrCode.UseVisualStyleBackColor = false;
-            this.btnQueryBasedOnQrCode.Click += new System.EventHandler(this.btnQueryBasedOnQrCode_Click);
-            // 
-            // lblQrCode2
-            // 
-            this.lblQrCode2.AutoSize = true;
-            this.lblQrCode2.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblQrCode2.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.lblQrCode2.Location = new System.Drawing.Point(805, 111);
-            this.lblQrCode2.Name = "lblQrCode2";
-            this.lblQrCode2.Size = new System.Drawing.Size(112, 16);
-            this.lblQrCode2.TabIndex = 77;
-            this.lblQrCode2.Text = "给定条码2信息";
-            // 
-            // txtQrCode2
-            // 
-            this.txtQrCode2.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtQrCode2.Location = new System.Drawing.Point(808, 130);
-            this.txtQrCode2.Name = "txtQrCode2";
-            this.txtQrCode2.Size = new System.Drawing.Size(180, 26);
-            this.txtQrCode2.TabIndex = 78;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1060, 611);
+            this.ClientSize = new System.Drawing.Size(1109, 674);
             this.ControlBox = false;
             this.Controls.Add(this.btnWritePLC);
             this.Controls.Add(this.btnReadPLC);
@@ -464,7 +539,6 @@
             this.Controls.Add(this.borderRadiusPanel1);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnConnectMysql);
             this.Controls.Add(this.btnGBDControl);
             this.Controls.Add(this.mnsMainMenu);
             this.MainMenuStrip = this.mnsMainMenu;
@@ -495,7 +569,6 @@
         private System.Windows.Forms.ToolStripMenuItem itemAbout;
         private System.Windows.Forms.ToolStripMenuItem itemAboutSystem;
         private System.Windows.Forms.Button btnGBDControl;
-        private System.Windows.Forms.Button btnConnectMysql;
         private System.Windows.Forms.Label lblCurrentTime;
         private System.Windows.Forms.TextBox txtCurrentTime;
         private System.Windows.Forms.Label lblPaddingWeight;
@@ -515,12 +588,20 @@
         private System.Windows.Forms.Label lblPadding2Weight;
         private System.Windows.Forms.Button btnReadPLC;
         private System.Windows.Forms.Button btnWritePLC;
-        private System.Windows.Forms.Button btnReadFromDB;
-        private System.Windows.Forms.RadioButton rbFail;
-        private System.Windows.Forms.RadioButton rbPass;
-        private System.Windows.Forms.RadioButton rbAll;
         private System.Windows.Forms.Button btnQueryBasedOnQrCode;
         private System.Windows.Forms.Label lblQrCode2;
         private System.Windows.Forms.TextBox txtQrCode2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtCode2FinalResult;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtCode1FinalResult;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCode2CheckResult;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtCode1CheckResult;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtQrCode;
     }
 }
