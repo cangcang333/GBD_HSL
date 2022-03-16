@@ -59,10 +59,10 @@ namespace GBD
 
             this.Load += MainForm_Load;
 
-            /*
+            
             this.Load += OpenPlc;
             this.Load += HandlingPLCData;
-            */
+            
 
             InitializeMainForm();
 
