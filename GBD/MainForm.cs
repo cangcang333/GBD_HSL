@@ -616,7 +616,7 @@ namespace GBD
             if (readResult != String.Empty)
             {
                 Log.Debug("Read qr_code info: " + readResult);
-                txtQrCodeInfo.Text = readResult;
+                txtQueryResultInfo.Text = readResult;
             }
             else
             {

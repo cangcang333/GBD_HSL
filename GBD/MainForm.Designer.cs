@@ -54,7 +54,7 @@
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.lblCurrentTime = new System.Windows.Forms.Label();
             this.borderRadiusPanel1 = new BWM01.BorderRadiusPanel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtQueryResultInfo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtQrCode = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -216,7 +216,7 @@
             // 
             this.btnReadPLC.BackColor = System.Drawing.Color.DarkTurquoise;
             this.btnReadPLC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnReadPLC.Location = new System.Drawing.Point(307, 608);
+            this.btnReadPLC.Location = new System.Drawing.Point(462, 609);
             this.btnReadPLC.Name = "btnReadPLC";
             this.btnReadPLC.Size = new System.Drawing.Size(111, 53);
             this.btnReadPLC.TabIndex = 71;
@@ -228,7 +228,7 @@
             // 
             this.btnWritePLC.BackColor = System.Drawing.Color.DarkTurquoise;
             this.btnWritePLC.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnWritePLC.Location = new System.Drawing.Point(452, 607);
+            this.btnWritePLC.Location = new System.Drawing.Point(606, 607);
             this.btnWritePLC.Name = "btnWritePLC";
             this.btnWritePLC.Size = new System.Drawing.Size(111, 53);
             this.btnWritePLC.TabIndex = 72;
@@ -311,7 +311,7 @@
             // borderRadiusPanel1
             // 
             this.borderRadiusPanel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.borderRadiusPanel1.Controls.Add(this.textBox6);
+            this.borderRadiusPanel1.Controls.Add(this.txtQueryResultInfo);
             this.borderRadiusPanel1.Controls.Add(this.label6);
             this.borderRadiusPanel1.Controls.Add(this.txtQrCode);
             this.borderRadiusPanel1.Controls.Add(this.label5);
@@ -335,16 +335,16 @@
             this.borderRadiusPanel1.Size = new System.Drawing.Size(1086, 452);
             this.borderRadiusPanel1.TabIndex = 49;
             // 
-            // textBox6
+            // txtQueryResultInfo
             // 
-            this.textBox6.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox6.Location = new System.Drawing.Point(13, 356);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox6.Size = new System.Drawing.Size(1049, 80);
-            this.textBox6.TabIndex = 93;
-            this.textBox6.Text = " ";
+            this.txtQueryResultInfo.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtQueryResultInfo.Location = new System.Drawing.Point(13, 356);
+            this.txtQueryResultInfo.Multiline = true;
+            this.txtQueryResultInfo.Name = "txtQueryResultInfo";
+            this.txtQueryResultInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtQueryResultInfo.Size = new System.Drawing.Size(1049, 80);
+            this.txtQueryResultInfo.TabIndex = 93;
+            this.txtQueryResultInfo.Text = " ";
             // 
             // label6
             // 
@@ -600,7 +600,7 @@
         private System.Windows.Forms.TextBox txtCode2CheckResult;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCode1CheckResult;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtQueryResultInfo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtQrCode;
     }
